@@ -5,8 +5,6 @@ import {
   Button,
   CssBaseline,
   TextField,
-  Link,
-  Grid,
   Typography,
   Container,
 } from "@material-ui/core";
@@ -48,7 +46,7 @@ const SignIn = () => {
     e.preventDefault();
     axios.post("http://localhost:5000/api/login", credentials).then((res) => {
       console.log("cd: SignIn.js: logIn: axios res: ", res);
-      window.localStorage.setItem('token', res.data.payload)
+      window.localStorage.setItem("token", res.data.payload);
       // setCredentials({
 
       // })
