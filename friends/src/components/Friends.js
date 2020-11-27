@@ -9,9 +9,13 @@ import {
   CardTitle,
   CardText,
   CardFooter,
+  Button,
 } from "reactstrap";
+import { useHistory } from "react-router-dom";
 
 const Friends = () => {
+
+  const history = useHistory();
   const [friends, setFriends] = useState([]);
 
   useEffect(() => {
@@ -24,6 +28,11 @@ const Friends = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    window.localStorage.removeItem("token");
+    history.push("/");
+  };
   return (
     <div>
       {friends.map((friend) => (
@@ -39,6 +48,12 @@ const Friends = () => {
           </Row>
         </Container>
       ))}
+      <br />
+      <>
+      <Button color="secondary" size="lg" onClick={handleSubmit} block>
+        Log Out
+      </Button>{''}
+      </>
     </div>
   );
 };
