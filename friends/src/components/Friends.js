@@ -31,9 +31,9 @@ const Friends = () => {
           <Row>
             <Card className="cardContainer">
               <CardBody>
-                <CardTitle tag="h2">{friend.name}</CardTitle>
-                <CardText>{`They are ${friend.age} yrs. old`}</CardText>
-                <CardFooter>{`${friend.email} is their email address`}</CardFooter>
+                <CardTitle tag="h3">{friend.name}</CardTitle>
+                <CardText>{`I'm ${friend.age} yrs. old`}</CardText>
+                <CardFooter>{`${friend.email} is my email address`}</CardFooter>
               </CardBody>
             </Card>
           </Row>

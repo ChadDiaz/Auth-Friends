@@ -17,10 +17,10 @@ const NavDiv = styled.div`
 const Navigation = () => {
   return (
     <NavDiv>
+      <Link to="/">Home</Link>
       <Link to="/signin">Sing In</Link>
       <Link to="/addFriend">Add A Friend</Link>
       <Link to="/protected">See Friends</Link>
-      <Link to="/">Home</Link>
     </NavDiv>
   );
 };
