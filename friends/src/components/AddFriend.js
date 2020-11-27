@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import { axiosWithAuth } from '../utilities/axiosWithAuth'
 
 const AddFriend = () => {
-
+    const history = useHistory();
     const [friend, setFriend] = useState({
         name: '',
         age: null,
@@ -16,6 +18,14 @@ const AddFriend = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        axiosWithAuth()
+        .post("/api/friends", friend)
+        .then((res) => {
+          console.log("cd: SignIn.js: logIn: axios res: ", res);
+          setFriend(res.data)
+          history.push("/protected");
+        })
+        .catch((err) => console.log("error", err))
     }
     return (
         <div> <br/><br/>

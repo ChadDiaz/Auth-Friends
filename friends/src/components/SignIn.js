@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { axiosWithAuth } from "../utilities/axiosWithAuth";
 import {
   Avatar,
   Button,
@@ -37,20 +38,22 @@ const SignIn = () => {
     password: "",
   });
 
+  const history = useHistory();
+
   const onChange = (e) => {
-    e.persist();
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
   const logIn = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/api/login", credentials).then((res) => {
-      console.log("cd: SignIn.js: logIn: axios res: ", res);
-      window.localStorage.setItem("token", res.data.payload);
-      // setCredentials({
-
-      // })
-    });
+    axiosWithAuth()
+      .post("/api/login", credentials)
+      .then((res) => {
+        // console.log("cd: SignIn.js: logIn: axios res: ", res);
+        window.localStorage.setItem("token", res.data.payload);
+        history.push("/protected");
+      })
+      .catch((err) => console.log("error", err))
   };
 
   const classes = useStyles();
