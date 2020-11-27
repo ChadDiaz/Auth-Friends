@@ -50,7 +50,7 @@ const Friends = () => {
       ))}
       <br />
       <>
-      <Button color="secondary" size="lg" onClick={handleSubmit} block>
+      <Button color="secondary" size="lg" onClick={() => handleSubmit()}>
         Log Out
       </Button>{''}
       </>
